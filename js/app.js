@@ -173,5 +173,5 @@ candidateForm.addEventListener("submit", async (event) => {
     // Show exam
     examFrameWrapper.hidden = false;
     examHeader.hidden = false;
-
+    startTimer(totalTimeMin);
 });
