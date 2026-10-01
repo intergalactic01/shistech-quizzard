@@ -1,4 +1,4 @@
-mic cam enabling needed?
-rules. pop up? 
-timer
-taking team name
+mic cam enabling needed? \n
+rules. pop up? \n
+timer \n
+taking team name \n
