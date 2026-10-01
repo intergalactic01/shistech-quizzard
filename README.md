@@ -1,2 +1,0 @@
-# shistech-quizzard
-link broken
