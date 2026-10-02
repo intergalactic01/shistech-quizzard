@@ -1,4 +1,6 @@
-mic cam enabling needed? \n
-rules. pop up? \n
-timer \n
-taking team name \n
+mic cam enabling needed?
+rules. pop up? 
+timer [done]
+taking team name
+add ASSETS FILE
+css: pick background and colour

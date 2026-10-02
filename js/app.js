@@ -81,12 +81,10 @@ acknowledgeRulesBtn.addEventListener("click", () => {
     
     rulesPanel.hidden = true;
     rulesAcknowledged = true;
-
+    categoryPanel.hidden = false;
 });
 
-if (rulesAcknowledged) {
-    categoryPanel.hidden = false;
-}
+
 
 // ====================
 // CATEGORY → CANDIDATE

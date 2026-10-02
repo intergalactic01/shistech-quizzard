@@ -1,0 +1,375 @@
+/*css shit*/
+/* ================================
+   GLOBAL
+   ================================ */
+
+/*setting da box size*/
+* {
+    box-sizing: border-box;
+}
+
+
+/*font and body */
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: "Google Sans Code", monospace;
+
+    background: linear-gradient(135deg, #0B1020 0%, #111827 55%, #172033 100%);
+    color: whitesmoke;
+}
+
+
+/*till h3 headings */
+h1, h2, h3 {
+    font-family: "Space Grotesk", sans-serif;
+}
+
+
+/* ================================
+   EXAM HEADER / HUD
+   ================================ */
+
+#examHeader {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+
+    width: 100%;
+    padding: 15px 25px;
+
+    background: #111827;
+    border-bottom: 1px solid #374151;
+}
+
+#examHeader > div:last-child {
+    justify-self: end;
+}
+
+.topic {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.hud-title {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+#displayStudent {
+    margin-left: 15px;
+    font-size: 0.9rem;
+}
+
+.topic {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.exam-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.badge {
+    padding: 6px 12px;
+
+    border: 1px solid #374151;
+    border-radius: 6px;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.badge-strikes {
+    font-weight: 700;
+}
+
+.badge-timer {
+    font-weight: 700;
+}
+
+
+
+/* ================================
+   BRANDING
+   ================================ */
+
+.brand-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    padding: 40px 20px 30px;
+}
+
+.brand-title {
+    margin: 0;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.brand-logo {
+    margin: 20px 0 10px;
+}
+
+.brand-logo img {
+    display: block;
+
+    width: 120px;
+    height: auto;
+}
+
+.brand-subtitle {
+    font-family: "Space Grotesk", monospace;
+    font-size: 1.5rem;
+    font-weight: 500;
+
+    opacity: 0.7;
+}
+
+
+
+/* ================================
+   RULES
+   ================================ */
+
+.rules-panel {
+    width: min(90%, 800px);
+    margin: 0 auto 40px;
+    padding: clamp(24px, 5vw, 40px);
+    text-align: left;
+    font-family: "Inter", sans-serif;
+
+    background: #172033;
+    border: 1px solid #334155;
+    border-top: 3px solid #38BDF8;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgb(0 0 0 / 25%);
+}
+
+.rules-panel h2 {
+    margin: 0 0 24px;
+    padding-bottom: 16px;
+    color: #F8FAFC;
+    font: 700 clamp(1.5rem, 4vw, 1.9rem) "Space Grotesk", sans-serif;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid #334155;
+}
+
+.rules-list {
+    display: grid;
+    gap: 14px;
+    margin: 0 0 30px;
+    padding: 0;
+    list-style: none;
+}
+
+.rules-list li {
+    position: relative;
+    padding-left: 22px;
+    color: #CBD5E1;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.rules-list li::before {
+    position: absolute;
+    top: 0.72em;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #38BDF8;
+    content: "";
+}
+
+.rules-panel .btn-primary {
+    min-height: 48px;
+    padding: 12px 20px;
+    color: #082F49;
+    background: #0EA5E9;
+    border: 1px solid #38BDF8;
+    border-radius: 8px;
+    font: 700 1rem "Inter", sans-serif;
+    cursor: pointer;
+    align-items: center;
+}
+
+.rules-panel .btn-primary:hover {
+    color: #FFFFFF;
+    background: #E11D48;
+    border-color: #E11D48;
+}
+
+.rules-panel .btn-primary:focus-visible {
+    outline: 3px solid #BAE6FD;
+    outline-offset: 3px;
+    align-items: center;
+}
+
+
+/* ================================
+   MAIN CONTENT
+   ================================ */
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.card {
+    width: 100%;
+
+    padding: 35px;
+
+    background: #172033;
+    border: 1px solid #374151;
+    border-radius: 12px;
+
+    text-align: center;
+}
+
+.card h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.8rem;
+}
+
+.card p {
+    margin-bottom: 25px;
+
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+
+/* ================================
+   DIVISION SELECTION
+   ================================ */
+
+/* .division-grid
+   - arrange Junior/Senior buttons
+*/
+
+
+/* .btn-division */
+
+
+/* .btn-division:hover */
+
+
+
+/* ================================
+   BUTTONS
+   ================================ */
+
+/* .btn
+   - common properties for ALL buttons
+*/
+
+
+/* .btn-primary */
+
+
+/* .btn-success */
+
+
+/* .btn-danger */
+
+
+/* hover states */
+
+
+/* disabled states */
+
+
+
+/* ================================
+   FORM
+   ================================ */
+
+/* .form-group */
+
+
+/* .form-group label */
+
+
+/* .form-group input */
+
+
+/* .form-group input:focus */
+
+
+/* .form-actions */
+
+
+/* #selectedDivisionText */
+
+
+
+/* ================================
+   EXAM / GOOGLE FORM
+   ================================ */
+
+/* #examFrameWrapper
+   - width
+   - height
+   - positioning
+*/
+
+
+/* #quizFrame
+   - width
+   - height
+   - border
+*/
+
+
+
+/* ================================
+   WARNING MODAL
+   ================================ */
+
+/* .overlay
+   - cover entire screen
+   - sit above everything
+*/
+
+
+/* .modal
+   - warning box
+   - width
+   - padding
+   - etc.
+*/
+
+
+/* .modal h3 */
+
+
+/* .modal p */
+
+
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+/* @media (...)
+   - adjustments for smaller screens
+*/
