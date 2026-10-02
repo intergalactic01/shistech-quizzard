@@ -2,13 +2,13 @@
 // ====================
 // GET HTML ELEMENTS
 // ====================
-
+console.log("APP.JS LOADED");
 const rulesPanel = document.getElementById("rulesPanel");
 const categoryPanel = document.getElementById("categoryPanel");
 const studentPanel = document.getElementById("studentPanel");
 const examFrameWrapper = document.getElementById("examFrameWrapper");
 const examHeader = document.getElementById("examHeader");
-
+exameFrameWrapper.hidden = true; //make hide
 const acknowledgeRulesBtn =
     document.getElementById("acknowledgeRulesBtn");
 
@@ -60,7 +60,7 @@ let totalTimeMin = 30; //CHANGE TIME TOTAL HERE
 
 function startTimer(totalTimeMin) {
     let timeRemainingSec= totalTimeMin * 60;
-    let secDisplayValue = 60;
+    let secDisplayValue = 0;
     let minDisplayValue = totalTimeMin;
     setInterval(() => {
         while (timeRemainingSec > 0) {
@@ -79,6 +79,8 @@ function startTimer(totalTimeMin) {
 
 acknowledgeRulesBtn.addEventListener("click", () => {
     
+    console.log("BUTTON WORKED");
+
     rulesPanel.hidden = true;
     rulesAcknowledged = true;
     categoryPanel.hidden = false;
@@ -162,7 +164,7 @@ candidateForm.addEventListener("submit", async (event) => {
         await document.documentElement.requestFullscreen();
     }
     catch (error) {
-        console.log("Fullscreen request failed:", error);
+        console.log("Failed to enter fullscreen:", error);
     }
 
     // Hide candidate screen

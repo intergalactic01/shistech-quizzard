@@ -262,15 +262,36 @@ h1, h2, h3 {
    DIVISION SELECTION
    ================================ */
 
-/* .division-grid
-   - arrange Junior/Senior buttons
-*/
+.division-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
 
+.btn-division {
+    padding: 25px 20px;
 
-/* .btn-division */
+    background: #111827;
+    color: #F8FAFC;
 
+    border: 1px solid #374151;
+    border-radius: 10px;
 
-/* .btn-division:hover */
+    font-family: "Google Sans Code", sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.btn-division:hover {
+    color: #FFFFFF;
+    background: #E11D48;
+    border-color: #E11D48;
+}
 
 
 
@@ -278,66 +299,171 @@ h1, h2, h3 {
    BUTTONS
    ================================ */
 
-/* .btn
-   - common properties for ALL buttons
-*/
+.btn {
+    padding: 12px 20px;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    font-family: "Google Sans Code", monospace;
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
 
 
-/* .btn-primary */
+/* PRIMARY */
+
+.btn-primary {
+    color: #082F49;
+    background: #0EA5E9;
+    border-color: #38BDF8;
+}
+
+.btn-primary:hover {
+    color: #FFFFFF;
+    background: #0284C7;
+}
 
 
-/* .btn-success */
+/* SUCCESS */
+
+.btn-success {
+    color: #052E16;
+    background: #22C55E;
+    border-color: #4ADE80;
+}
+
+.btn-success:hover {
+    color: #FFFFFF;
+    background: #16A34A;
+}
 
 
-/* .btn-danger */
+/* DANGER */
+
+.btn-danger {
+    color: #FFFFFF;
+    background: #DC2626;
+    border-color: #EF4444;
+}
+
+/* abort button */
+#backBtn {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+}
+/* continue and start button */
+#startBtn {
+    padding: 8px 14px;
+    font-size: 0.8em;
+}
 
 
-/* hover states */
+.btn-danger:hover {
+    background: #B91C1C;
+}
 
 
-/* disabled states */
+/* DISABLED */
 
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 
 
 /* ================================
    FORM
    ================================ */
 
-/* .form-group */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 
+    margin-top: 15px;
 
-/* .form-group label */
+    text-align: left;
+}
 
+.form-group label {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
 
-/* .form-group input */
+.form-group input {
+    width: 100%;
 
+    padding: 12px 14px;
 
-/* .form-group input:focus */
+    background: #111827;
+    color: #F8FAFC;
 
+    border: 1px solid #374151;
+    border-radius: 8px;
 
-/* .form-actions */
+    font-family: "Google Sans Code", monospace;
+    font-size: 0.95rem;
+}
 
+.form-group input::placeholder {
+    color: #64748B;
+}
 
-/* #selectedDivisionText */
+.form-group input:focus {
+    outline: none;
 
+    border-color: #38BDF8;
+    box-shadow: 0 0 0 2px rgb(56 189 248 / 15%);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 15px;
+    margin-top: 35px;
+}
+
+#selectedDivisionText {
+    color: #38BDF8;
+
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 600;
+}
 
 
 /* ================================
-   EXAM / GOOGLE FORM
+   GOOGLE FORM EMBED
    ================================ */
 
-/* #examFrameWrapper
-   - width
-   - height
-   - positioning
-*/
+#examFrameWrapper {
+    width: 100%;
+    height: calc(100vh - 70px);
 
+    padding: 20px 30px;
 
-/* #quizFrame
-   - width
-   - height
-   - border
-*/
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+#quizFrame {
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+
+    border: 1px solid #374151;
+    border-radius: 10px;
+
+    background: #FFFFFF;
+}
 
 
 
