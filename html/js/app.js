@@ -8,7 +8,7 @@ const categoryPanel = document.getElementById("categoryPanel");
 const studentPanel = document.getElementById("studentPanel");
 const examFrameWrapper = document.getElementById("examFrameWrapper");
 const examHeader = document.getElementById("examHeader");
-exameFrameWrapper.hidden = true; //make hide
+examFrameWrapper.hidden = true; //make hide
 const acknowledgeRulesBtn =
     document.getElementById("acknowledgeRulesBtn");
 
@@ -56,21 +56,22 @@ let rulesAcknowledged = false; //prevent user from accessing forms w/o acknowled
 
 //timer stuff
 let totalTimeMin = 30; //CHANGE TIME TOTAL HERE
-
+const t = document.getElementById("timer");
 
 function startTimer(totalTimeMin) {
     let timeRemainingSec= totalTimeMin * 60;
-    let secDisplayValue = 0;
+    let secDisplayValue = 59;
     let minDisplayValue = totalTimeMin;
     setInterval(() => {
-        while (timeRemainingSec > 0) {
+        if (timeRemainingSec > 0) {
             timeRemainingSec--;
             secDisplayValue = timeRemainingSec % 60;
             minDisplayValue = Math.floor(timeRemainingSec / 60);
+            t.textContent = "TIME REMAINING:\t" + minDisplayValue + ": " + secDisplayValue;
         }
     }, 1000);
-    const t = document.getElementById("timer");
-    t.textContent = "TIME REMAINING:\t" + minDisplayValue + ": " + secDisplayValue;
+    
+    
 }
 
 // ====================

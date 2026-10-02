@@ -454,6 +454,10 @@ h1, h2, h3 {
     align-items: stretch;
 }
 
+#examFrameWrapper[hidden] {
+    display: none !important;
+}
+
 #quizFrame {
     width: 100%;
     max-width: 1200px;
@@ -468,34 +472,149 @@ h1, h2, h3 {
 
 
 /* ================================
-   WARNING MODAL
+   WARNING BOX
    ================================ */
 
-/* .overlay
-   - cover entire screen
-   - sit above everything
-*/
+.overlay {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background: rgb(0 0 0 / 70%);
+
+    z-index: 1000;
+}
+
+.overlay[hidden] {
+    display: none;
+}
 
 
-/* .modal
-   - warning box
-   - width
-   - padding
-   - etc.
-*/
+/* MODAL BOX */
+
+.modal {
+    width: min(90%, 500px);
+
+    padding: 30px;
+
+    background: #172033;
+
+    border: 1px solid #374151;
+    border-top: 3px solid #EF4444;
+    border-radius: 12px;
+
+    text-align: center;
+
+    box-shadow: 0 20px 60px rgb(0 0 0 / 40%);
+}
 
 
-/* .modal h3 */
+/* TITLE */
+
+.modal h3 {
+    margin: 0 0 15px;
+
+    color: #F8FAFC;
+
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.4rem;
+}
 
 
-/* .modal p */
+/* MESSAGE */
 
+.modal p {
+    margin: 0 0 25px;
+
+    color: #CBD5E1;
+
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+
+/* BUTTON */
+
+.modal .btn-danger {
+    min-width: 200px;
+}
 
 
 /* ================================
    RESPONSIVE
    ================================ */
 
-/* @media (...)
-   - adjustments for smaller screens
-*/
+@media (max-width: 600px) {
+
+    /* Branding */
+
+    .brand-title {
+        font-size: 2.3rem;
+    }
+
+    .brand-subtitle {
+        font-size: 1.2rem;
+    }
+
+
+    /* Main cards */
+
+    .card {
+        padding: 25px 20px;
+    }
+
+
+    /* Division buttons */
+
+    .division-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Candidate buttons */
+
+    .form-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+
+
+    /* Exam header */
+
+    #examHeader {
+        grid-template-columns: 1fr;
+        gap: 10px;
+
+        text-align: center;
+    }
+
+    #examHeader > div:last-child {
+        justify-self: center;
+    }
+
+    #displayStudent {
+        display: block;
+        margin: 5px 0 0;
+    }
+
+    .exam-status {
+        justify-content: center;
+    }
+
+
+    /* Google Form */
+
+    #examFrameWrapper {
+        padding: 10px;
+    }
+}
+/*ai chap */
