@@ -2,7 +2,7 @@
 // ====================
 // GET HTML ELEMENTS
 // ====================
-console.log("APP.JS LOADED");
+console.log("app.js loaded :D");
 const rulesPanel = document.getElementById("rulesPanel");
 const categoryPanel = document.getElementById("categoryPanel");
 const studentPanel = document.getElementById("studentPanel");
@@ -35,8 +35,12 @@ const displayStudent =
 
 const quizFrame =
     document.getElementById("quizFrame");
+
 const terminationScreen =
     document.getElementById("terminationScreen"); //if exam was terminated due to tabswitch
+
+const startBtn =
+    document.getElementById("startBtn");
 
 // ====================
 // GOOGLE FORM LINKS
@@ -60,30 +64,72 @@ let totalTimeMin = 30; //CHANGE TIME TOTAL HERE
 const t = document.getElementById("timer");
 
 function startTimer(totalTimeMin) {
-    let timeRemainingSec= totalTimeMin * 60;
-    let secDisplayValue = 59;
-    let minDisplayValue = totalTimeMin;
-    setInterval(() => {
-        if (timeRemainingSec > 0) {
-            timeRemainingSec--;
-            secDisplayValue = timeRemainingSec % 60;
-            minDisplayValue = Math.floor(timeRemainingSec / 60);
-            t.textContent = "TIME REMAINING:\t" + minDisplayValue + ": " + secDisplayValue;
+    let timeRemainingSec = totalTimeMin * 60;
+    t.textContent =
+        "TIME REMAINING: " +
+        Math.floor(timeRemainingSec / 60) +
+        ":00";
+    const timerInterval = setInterval(() => {
+        if (!window.examStarted) {
+            clearInterval(timerInterval);
+            return;
         }
+        if (timeRemainingSec <= 0) {
+            clearInterval(timerInterval);
+            terminate();
+            return;
+        }
+        timeRemainingSec--;
+
+        const minutes =
+            Math.floor(timeRemainingSec / 60);
+
+        const seconds =
+            timeRemainingSec % 60;
+
+        t.textContent =
+            "TIME REMAINING: " +
+            minutes +
+            ":" +
+            String(seconds).padStart(2, "0");
     }, 1000);
-    
-    
 }
+    
+    
+
+// ====================
+// EVENT START TIME
+// ====================
+
+const eventStartTime =
+    new Date("2026-10-03T00:00:00+05:30");
+
+function checkStartTime() {
+
+    if (new Date() >= eventStartTime) {
+
+        startBtn.disabled = false;
+
+        startBtn.textContent =
+            "ENGAGE FULLSCREEN & START";
+
+        clearInterval(startTimeChecker);
+    }
+}
+
+const startTimeChecker =
+    setInterval(checkStartTime, 1000);
+
+checkStartTime();
+
 
 // TERMINATION WWWWWWOW
 function terminate() {
+    window.examStarted = false;
     examFrameWrapper.hidden = true;
     examHeader.hidden = true;
-
+    warningModal.hidden = true;
     terminationScreen.hidden = false;
-
-    window.examStarted = false;
-
     if (document.fullscreenElement) {
         document.exitFullscreen();
     }
@@ -117,7 +163,7 @@ juniorBtn.addEventListener("click", () => {
 
     categoryPanel.hidden = true;
     studentPanel.hidden = false;
-    window.examStarted = true;
+    
 
 });
 
@@ -131,7 +177,6 @@ seniorBtn.addEventListener("click", () => {
 
     categoryPanel.hidden = true;
     studentPanel.hidden = false;
-    window.examStarted = true;
 });
 
 
@@ -192,4 +237,5 @@ candidateForm.addEventListener("submit", async (event) => {
     examHeader.hidden = false;
     examStarted = true;
     startTimer(totalTimeMin);
+    window.examStarted = true;
 });

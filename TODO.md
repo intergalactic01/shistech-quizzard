@@ -1,7 +1,3 @@
-mic cam enabling needed?
-rules. pop up? 
-timer [done]
-taking team name
+timer
 add ASSETS FILE
-assets needed: shistech logo ; favicon icon for tab icon
-css: pick background and colour
+assets needed: favicon icon for tab icon

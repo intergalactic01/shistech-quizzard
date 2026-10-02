@@ -51,16 +51,15 @@ function registerStrike(reason) {
 
     // End exam if maximum strikes are reached
     if (strikes >= maxStrikes) {
+        
         warningTitle.textContent =
             "EXAM TERMINATED";
 
         warningMessage.textContent =
             "Fullscreen exited. \nAs per the rules, your session has been terminated. \nContact the Quizzard Event Manager on Discord to appeal.";
-
+        
         acknowledgeBtn.textContent =
             "END EXAM";
-
-        terminate(); //scary
     }
 }
 
@@ -96,7 +95,9 @@ document.addEventListener("fullscreenchange", () => {
 // ================================
 
 acknowledgeBtn.addEventListener("click", () => {
-
+    if (strikes >= maxStrikes) {
+        terminate();
+        return;
+    }
     warningModal.hidden = true;
-
 });

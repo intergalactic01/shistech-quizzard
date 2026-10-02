@@ -622,13 +622,25 @@ h1, h2, h3 {
 /* not ai chap */
 #terminationScreen {
     min-height: 80vh;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     text-align: center;
+    color: #38BDF8;
+}
+
+#terminationScreen[hidden] {
+    display: none !important;
+}
+
+#terminationScreen h2 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 2rem;
+}
+
+#terminationScreen p {
+    color: #CBD5E1;
 }
 #examEnded h2 {
     margin-bottom: 10px;
