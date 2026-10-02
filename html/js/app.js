@@ -2,13 +2,24 @@
 // ====================
 // GET HTML ELEMENTS
 // ====================
-console.log("app.js loaded :D");
+console.log("wowow app.js loaded :D");
+if (localStorage.getItem("examTerminated") === "true") {
+    terminate();
+} //prob wont work but why not try
 const rulesPanel = document.getElementById("rulesPanel");
 const categoryPanel = document.getElementById("categoryPanel");
 const studentPanel = document.getElementById("studentPanel");
 const examFrameWrapper = document.getElementById("examFrameWrapper");
 const examHeader = document.getElementById("examHeader");
+
 examFrameWrapper.hidden = true; //make hide
+
+const preExamPanel =
+    document.getElementById("preExamPanel");
+
+const continueStartBtn =
+    document.getElementById("continueStartBtn");
+
 const acknowledgeRulesBtn =
     document.getElementById("acknowledgeRulesBtn");
 
@@ -59,26 +70,37 @@ const forms = {
 let selectedDivision = "";
 let rulesAcknowledged = false; //prevent user from accessing forms w/o acknowledging rules
 
-//timer stuff
+
+// ====================
+// TIMER STUFF
+// ====================
+
 let totalTimeMin = 30; //CHANGE TIME TOTAL HERE
+
 const t = document.getElementById("timer");
 
 function startTimer(totalTimeMin) {
+
     let timeRemainingSec = totalTimeMin * 60;
+
     t.textContent =
         "TIME REMAINING: " +
         Math.floor(timeRemainingSec / 60) +
         ":00";
+
     const timerInterval = setInterval(() => {
+
         if (!window.examStarted) {
             clearInterval(timerInterval);
             return;
         }
+
         if (timeRemainingSec <= 0) {
             clearInterval(timerInterval);
-            terminate();
+            terminate(); localStorage.setItem("examTerminated", "true");
             return;
         }
+
         timeRemainingSec--;
 
         const minutes =
@@ -92,62 +114,44 @@ function startTimer(totalTimeMin) {
             minutes +
             ":" +
             String(seconds).padStart(2, "0");
+
     }, 1000);
 }
-    
-    
+
 
 // ====================
-// EVENT START TIME
-// ====================
-
-const eventStartTime =
-    new Date("2026-10-03T00:00:00+05:30");
-
-function checkStartTime() {
-
-    if (new Date() >= eventStartTime) {
-
-        startBtn.disabled = false;
-
-        startBtn.textContent =
-            "ENGAGE FULLSCREEN & START";
-
-        clearInterval(startTimeChecker);
-    }
-}
-
-const startTimeChecker =
-    setInterval(checkStartTime, 1000);
-
-checkStartTime();
-
-
 // TERMINATION WWWWWWOW
+// ====================
+
 function terminate() {
+
     window.examStarted = false;
+
     examFrameWrapper.hidden = true;
     examHeader.hidden = true;
     warningModal.hidden = true;
+
     terminationScreen.hidden = false;
+
     if (document.fullscreenElement) {
         document.exitFullscreen();
     }
 }
+
 
 // ====================
 // RULES → CATEGORY
 // ====================
 
 acknowledgeRulesBtn.addEventListener("click", () => {
-    
+
     console.log("BUTTON WORKED");
 
     rulesPanel.hidden = true;
     rulesAcknowledged = true;
     categoryPanel.hidden = false;
-});
 
+});
 
 
 // ====================
@@ -163,7 +167,6 @@ juniorBtn.addEventListener("click", () => {
 
     categoryPanel.hidden = true;
     studentPanel.hidden = false;
-    
 
 });
 
@@ -177,6 +180,7 @@ seniorBtn.addEventListener("click", () => {
 
     categoryPanel.hidden = true;
     studentPanel.hidden = false;
+
 });
 
 
@@ -195,10 +199,10 @@ backBtn.addEventListener("click", () => {
 
 
 // ====================
-// START EXAM
+// CONFIRM LOGIN
 // ====================
 
-candidateForm.addEventListener("submit", async (event) => {
+candidateForm.addEventListener("submit", (event) => {
 
     // Stop the form from actually submitting/reloading the page
     event.preventDefault();
@@ -212,6 +216,21 @@ candidateForm.addEventListener("submit", async (event) => {
 
     // Display candidate name in the exam header
     displayStudent.textContent = name;
+
+    // DON'T START THE EXAM HERE
+    // Just move to the confirmation screen
+
+    studentPanel.hidden = true;
+    preExamPanel.hidden = false;
+
+});
+
+
+// ====================
+// ACTUALLY START EXAM
+// ====================
+
+continueStartBtn.addEventListener("click", async () => {
 
     // Load the correct Google Form
     if (selectedDivision === "Junior") {
@@ -229,13 +248,17 @@ candidateForm.addEventListener("submit", async (event) => {
         console.log("Failed to enter fullscreen:", error);
     }
 
-    // Hide candidate screen
-    studentPanel.hidden = true;
+    // Hide confirmation screen
+    preExamPanel.hidden = true;
 
     // Show exam
     examFrameWrapper.hidden = false;
     examHeader.hidden = false;
-    examStarted = true;
-    startTimer(totalTimeMin);
+
+    // NOW the exam has actually started
     window.examStarted = true;
+
+    // Start timer
+    startTimer(totalTimeMin);
+
 });

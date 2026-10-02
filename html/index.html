@@ -1,8 +1,9 @@
-<!-- main html draft -->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,14 +11,17 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href=" https://fonts.gstatic.com" crossorigin>
-    <!-- css ref-->
-     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Google Fonts -->
     <link
-    href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
->
+        href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
 </head>
 
 
@@ -30,18 +34,24 @@
     <header id="examHeader" hidden>
 
         <div>
+
             <strong class="hud-title" id="displayExamTitle">
-                Round 1 
+                Round 1
             </strong>
 
             <span id="displayStudent"></span>
+
         </div>
 
+
         <div>
+
             <strong class="topic">
                 Academia
             </strong>
+
         </div>
+
 
         <div class="exam-status">
 
@@ -69,13 +79,13 @@
         </h1>
 
         <div class="brand-logo">
+
             <img
                 src="assets/TECHTECHLOGOLOGO.png"
                 alt="SHISTECH Logo"
             >
-        </div>
 
-        
+        </div>
 
         <div class="brand-subtitle">
             Quizzard Portal
@@ -83,14 +93,15 @@
 
     </div>
 
+
     <!-- ==================== -->
-    <!-- RULES                -->
+    <!-- RULES                 -->
     <!-- ==================== -->
-    
-    <div class="rules-panel" id="rulesPanel" >
+
+    <div class="rules-panel" id="rulesPanel">
 
         <h2>
-            RULES & INSTRUCTIONS
+            RULES &amp; INSTRUCTIONS
         </h2>
 
         <ul class="rules-list">
@@ -108,27 +119,32 @@
             </li>
 
             <li>
-                Do not exit full-screen mode or turn off your camera or microphone during the event. 
+                Do not exit full-screen mode or turn off your camera or microphone during the event.
             </li>
 
             <li>
-                Doing any of the above will result in a direct disqualification. Contact the Quizzard Event Manager on Discord to appeal.
+                Doing any of the above will result in a direct disqualification.
+                Contact the Quizzard Event Manager on Discord to appeal.
             </li>
 
             <li>
-                All team members may open the portal on their devices and log in, but only one member should submit the solutions.
+                All team members may open the portal on their devices and log in,
+                but only one member should submit the solutions.
             </li>
 
-        </ul> 
+        </ul>
+
 
         <button
             class="btn btn-primary"
             id="acknowledgeRulesBtn"
+            type="button"
         >
             ACKNOWLEDGE &amp; PROCEED
         </button>
 
-    </div>  
+    </div>
+
 
     <!-- ==================== -->
     <!-- MAIN CONTENT          -->
@@ -137,7 +153,9 @@
     <main class="container" id="mainContainer">
 
 
-        <!-- DIVISION SELECTION -->
+        <!-- ==================== -->
+        <!-- DIVISION SELECTION   -->
+        <!-- ==================== -->
 
         <section class="card" id="categoryPanel" hidden>
 
@@ -146,7 +164,7 @@
             </h2>
 
             <p>
-                Select your registered category below
+                Select your registered category below.
             </p>
 
             <div class="division-grid">
@@ -154,6 +172,7 @@
                 <button
                     class="btn-division"
                     id="juniorBtn"
+                    type="button"
                 >
                     JUNIOR DIVISION
                 </button>
@@ -161,6 +180,7 @@
                 <button
                     class="btn-division"
                     id="seniorBtn"
+                    type="button"
                 >
                     SENIOR DIVISION
                 </button>
@@ -170,10 +190,11 @@
         </section>
 
 
-        <!-- CANDIDATE DETAILS -->
+        <!-- ==================== -->
+        <!-- CANDIDATE DETAILS     -->
+        <!-- ==================== -->
 
-        <section
-            class="card" id="studentPanel" hidden>        
+        <section class="card" id="studentPanel" hidden>
 
             <h2>
                 AUTHENTICATION REQUIRED
@@ -185,8 +206,10 @@
             ></p>
 
             <p>
-                Switching tabs or leaving this window will result in a disqualification. Ensure beforehand that you have a stable connection.
-                Contact the Quizzard Event Manager if you feel an accidental strike has been recorded.
+                Switching tabs or leaving this window will result in a disqualification.
+                Ensure beforehand that you have a stable connection.
+                Contact the Quizzard Event Manager if you feel an accidental strike
+                has been recorded.
 
                 <strong>
                     Only one attempt is permitted per Candidate ID.
@@ -228,7 +251,7 @@
                         class="btn btn-success"
                         id="startBtn"
                     >
-                        ENGAGE FULLSCREEN &amp; START
+                        CONFIRM LOG IN
                     </button>
 
                 </div>
@@ -236,6 +259,32 @@
             </form>
 
         </section>
+
+
+        <!-- ==================== -->
+        <!-- PRE-EXAM SCREEN       -->
+        <!-- ==================== -->
+
+        <section class="card" id="preExamPanel" hidden>
+
+            <h2>
+                Log In Confirmed. <br>Do NOT continue to start until instructed.
+            </h2>
+
+            <p>
+                Reminder: Switching tabs or leaving this window will result in a disqualification.
+            </p>
+
+            <button
+                class="btn btn-success"
+                id="continueStartBtn"
+                type="button"
+            >
+                CONTINUE TO START
+            </button>
+
+        </section>
+
 
     </main>
 
@@ -280,6 +329,7 @@
             <button
                 class="btn btn-danger"
                 id="acknowledgeBtn"
+                type="button"
             >
                 ACKNOWLEDGE &amp; RETURN
             </button>
@@ -290,22 +340,31 @@
 
 
     <!-- ==================== -->
-    <!-- referring to js and css       -->
+    <!-- SESSION TERMINATION   -->
     <!-- ==================== -->
 
-
-    <!-- Session termination end screen-->
     <div id="terminationScreen" hidden>
-        <h2>Exam Terminated</h2>
-        <p>Your session has been terminated due to a violation of the rules. <br>Contact the Quizzard Event Manager on Discord to appeal.</p>
+
+        <h2>
+            Exam Terminated
+        </h2>
+
+        <p>
+            Your session has been terminated due to a violation of the rules.
+            <br>
+            Contact the Quizzard Event Manager on Discord to appeal.
+        </p>
+
     </div>
 
 
+    <!-- ==================== -->
+    <!-- js linkeys         -->
+    <!-- ==================== -->
+
     <script src="js/app.js"></script>
     <script src="js/proctor.js"></script>
-    
-    
+
 </body>
 
 </html>
-
