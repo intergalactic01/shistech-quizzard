@@ -618,3 +618,25 @@ h1, h2, h3 {
     }
 }
 /*ai chap */
+
+/* not ai chap */
+#terminationScreen {
+    min-height: 80vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+#examEnded h2 {
+    margin-bottom: 10px;
+
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 2rem;
+}
+
+#examEnded p {
+    color: #CBD5E1;
+}

@@ -55,10 +55,12 @@ function registerStrike(reason) {
             "EXAM TERMINATED";
 
         warningMessage.textContent =
-            "Maximum number of strikes reached. Your exam has been terminated.";
+            "Fullscreen exited. \nAs per the rules, your session has been terminated. \nContact the Quizzard Event Manager on Discord to appeal.";
 
         acknowledgeBtn.textContent =
             "END EXAM";
+
+        terminate(); //scary
     }
 }
 

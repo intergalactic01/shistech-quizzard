@@ -35,7 +35,8 @@ const displayStudent =
 
 const quizFrame =
     document.getElementById("quizFrame");
-
+const terminationScreen =
+    document.getElementById("terminationScreen"); //if exam was terminated due to tabswitch
 
 // ====================
 // GOOGLE FORM LINKS
@@ -72,6 +73,20 @@ function startTimer(totalTimeMin) {
     }, 1000);
     
     
+}
+
+// TERMINATION WWWWWWOW
+function terminate() {
+    examFrameWrapper.hidden = true;
+    examHeader.hidden = true;
+
+    terminationScreen.hidden = false;
+
+    window.examStarted = false;
+
+    if (document.fullscreenElement) {
+        document.exitFullscreen();
+    }
 }
 
 // ====================
