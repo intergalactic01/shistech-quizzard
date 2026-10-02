@@ -102,6 +102,7 @@ juniorBtn.addEventListener("click", () => {
 
     categoryPanel.hidden = true;
     studentPanel.hidden = false;
+    window.examStarted = true;
 
 });
 
@@ -115,7 +116,7 @@ seniorBtn.addEventListener("click", () => {
 
     categoryPanel.hidden = true;
     studentPanel.hidden = false;
-
+    window.examStarted = true;
 });
 
 
@@ -174,5 +175,6 @@ candidateForm.addEventListener("submit", async (event) => {
     // Show exam
     examFrameWrapper.hidden = false;
     examHeader.hidden = false;
+    examStarted = true;
     startTimer(totalTimeMin);
 });
