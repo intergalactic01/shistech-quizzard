@@ -9,8 +9,6 @@
 
 window.examStarted = false;
 
-const warningModal =
-    document.getElementById("warningModal");
 
 const warningTitle =
     document.getElementById("warningTitle");
@@ -51,16 +49,36 @@ function registerStrike(reason) {
 
     // End exam if maximum strikes are reached
     if (strikes >= maxStrikes) {
-        
-        warningTitle.textContent =
-            "EXAM TERMINATED";
 
-        warningMessage.textContent =
-            "Fullscreen exited. \nAs per the rules, your session has been terminated. \nContact the Quizzard Event Manager on Discord to appeal.";
-        
-        acknowledgeBtn.textContent =
-            "END EXAM";
-    }
+    warningTitle.textContent =
+        "EXAM TERMINATED";
+
+    warningMessage.textContent =
+        "A violation of the exam rules was detected. Your session has been terminated. Contact the Quizzard Event Manager on Discord to appeal.";
+
+    acknowledgeBtn.disabled = true;
+    acknowledgeBtn.textContent = "END EXAM (59)";
+
+    let countdown = 59;
+
+    const terminationCountdown = setInterval(() => {
+
+        countdown--;
+
+        if (countdown > 0) {
+            acknowledgeBtn.textContent =
+                "END EXAM (" + countdown + ")";
+        }
+        else {
+            clearInterval(terminationCountdown);
+
+            acknowledgeBtn.disabled = false;
+            acknowledgeBtn.textContent =
+                "END EXAM";
+        }
+
+    }, 1000);
+}
 }
 
 

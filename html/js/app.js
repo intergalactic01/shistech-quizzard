@@ -3,9 +3,8 @@
 // GET HTML ELEMENTS
 // ====================
 console.log("wowow app.js loaded :D");
-if (localStorage.getItem("examTerminated") === "true") {
-    terminate();
-} //prob wont work but why not try
+
+
 const rulesPanel = document.getElementById("rulesPanel");
 const categoryPanel = document.getElementById("categoryPanel");
 const studentPanel = document.getElementById("studentPanel");
@@ -52,7 +51,8 @@ const terminationScreen =
 
 const startBtn =
     document.getElementById("startBtn");
-
+const warningModal =
+    document.getElementById("warningModal");
 // ====================
 // GOOGLE FORM LINKS
 // ====================
@@ -75,39 +75,37 @@ let rulesAcknowledged = false; //prevent user from accessing forms w/o acknowled
 // TIMER STUFF
 // ====================
 
-let totalTimeMin = 30; //CHANGE TIME TOTAL HERE
+// ====================
+// TIMER STUFF
+// ====================
+
+let totalTimeMin = 30; // CHANGE TIME TOTAL HERE
 
 const t = document.getElementById("timer");
 
+let timerInterval = null;
+let examEndTime = null;
+
 function startTimer(totalTimeMin) {
 
-    let timeRemainingSec = totalTimeMin * 60;
+    // Prevent multiple timers from running
+    if (timerInterval !== null) {
+        clearInterval(timerInterval);
+    }
 
-    t.textContent =
-        "TIME REMAINING: " +
-        Math.floor(timeRemainingSec / 60) +
-        ":00";
+    // Calculate exact time when exam ends
+    examEndTime = Date.now() + (totalTimeMin * 60 * 1000);
 
-    const timerInterval = setInterval(() => {
+    function updateTimer() {
 
-        if (!window.examStarted) {
-            clearInterval(timerInterval);
-            return;
-        }
+        const timeRemainingMs = examEndTime - Date.now();
+        const timeRemainingSec = Math.max(
+            0,
+            Math.ceil(timeRemainingMs / 1000)
+        );
 
-        if (timeRemainingSec <= 0) {
-            clearInterval(timerInterval);
-            terminate(); localStorage.setItem("examTerminated", "true");
-            return;
-        }
-
-        timeRemainingSec--;
-
-        const minutes =
-            Math.floor(timeRemainingSec / 60);
-
-        const seconds =
-            timeRemainingSec % 60;
+        const minutes = Math.floor(timeRemainingSec / 60);
+        const seconds = timeRemainingSec % 60;
 
         t.textContent =
             "TIME REMAINING: " +
@@ -115,7 +113,19 @@ function startTimer(totalTimeMin) {
             ":" +
             String(seconds).padStart(2, "0");
 
-    }, 1000);
+        if (timeRemainingSec <= 0) {
+
+            clearInterval(timerInterval);
+            timerInterval = null;
+
+            terminate();
+        }
+    }
+    // Show 30:00 immediately
+    updateTimer();
+
+    // Update every second
+    timerInterval = setInterval(updateTimer, 1000);
 }
 
 
@@ -127,9 +137,16 @@ function terminate() {
 
     window.examStarted = false;
 
+    localStorage.setItem("examTerminated", "true");
+
     examFrameWrapper.hidden = true;
     examHeader.hidden = true;
     warningModal.hidden = true;
+    preExamPanel.hidden = true;
+    studentPanel.hidden = true;
+    categoryPanel.hidden = true;
+    rulesPanel.hidden = true;
+    brandHeader.hidden = true;
 
     terminationScreen.hidden = false;
 
@@ -138,9 +155,8 @@ function terminate() {
     }
 }
 
-
 // ====================
-// RULES → CATEGORY
+// RULES → CATEGORY 
 // ====================
 
 acknowledgeRulesBtn.addEventListener("click", () => {
@@ -246,6 +262,7 @@ continueStartBtn.addEventListener("click", async () => {
     }
     catch (error) {
         console.log("Failed to enter fullscreen:", error);
+        return;
     }
 
     // Hide confirmation screen
@@ -262,3 +279,6 @@ continueStartBtn.addEventListener("click", async () => {
     startTimer(totalTimeMin);
 
 });
+if (localStorage.getItem("examTerminated") === "true") {
+    terminate();
+}//prob wont work but why not try

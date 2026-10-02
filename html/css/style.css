@@ -47,12 +47,6 @@ h1, h2, h3 {
     justify-self: end;
 }
 
-.topic {
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    text-align: center;
-}
 
 .hud-title {
     font-family: "Space Grotesk", sans-serif;
@@ -202,7 +196,6 @@ h1, h2, h3 {
     border-radius: 8px;
     font: 700 1rem "Inter", sans-serif;
     cursor: pointer;
-    align-items: center;
 }
 
 .rules-panel .btn-primary:hover {
@@ -214,7 +207,6 @@ h1, h2, h3 {
 .rules-panel .btn-primary:focus-visible {
     outline: 3px solid #BAE6FD;
     outline-offset: 3px;
-    align-items: center;
 }
 
 
@@ -651,4 +643,59 @@ h1, h2, h3 {
 
 #examEnded p {
     color: #CBD5E1;
+}
+/* ================================
+   TERMINATION WARNING
+   ================================ */
+
+.termination-modal {
+    width: min(90%, 800px);
+    min-height: 45vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px;
+
+    background: #172033;
+    border: 2px solid #EF4444;
+    border-radius: 16px;
+
+    text-align: center;
+
+    box-shadow: 0 20px 80px rgb(0 0 0 / 60%);
+}
+
+.termination-modal h3 {
+    margin: 0 0 25px;
+
+    color: #F8FAFC;
+
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.termination-modal p {
+    margin: 0 0 35px;
+
+    max-width: 650px;
+
+    color: #CBD5E1;
+
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    line-height: 1.7;
+}
+
+.termination-modal .btn-danger {
+    min-width: 240px;
+    min-height: 55px;
+
+    font-size: 1rem;
+}
+
+.termination-modal .btn-danger:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
 }
