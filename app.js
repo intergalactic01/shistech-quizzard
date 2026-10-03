@@ -10,7 +10,8 @@ const categoryPanel = document.getElementById("categoryPanel");
 const studentPanel = document.getElementById("studentPanel");
 const examFrameWrapper = document.getElementById("examFrameWrapper");
 const examHeader = document.getElementById("examHeader");
-
+const brandHeader =
+    document.getElementById("brandHeader");//might fuck up but whoop
 examFrameWrapper.hidden = true; //make hide
 
 const preExamPanel =

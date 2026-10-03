@@ -97,12 +97,20 @@ h1, h2, h3 {
    ================================ */
 
 .brand-header {
+    position: relative;
+
     display: flex;
+    
     flex-direction: column;
     align-items: center;
     text-align: center;
 
     padding: 40px 20px 30px;
+}
+.brand-header .exam-status {
+    position: absolute;
+    top: 20px;
+    right: 25px;
 }
 
 .brand-title {
