@@ -58,7 +58,7 @@ const warningModal =
 // ====================
 
 const forms = {
-    junior: "https://forms.gle/WKEBbArmU4Gj9K5j9",
+    junior: "https://docs.google.com/forms/d/e/1FAIpQLSdBpFUnqAc4Rrlggj191J7yfjKurot6ki_f3lLkv-mdgCXz6A/viewform?usp=dialog",
     senior: "https://forms.gle/yBnJ1mKbd7B9rzZG6"
 };
 
@@ -137,7 +137,7 @@ function terminate() {
 
     window.examStarted = false;
 
-    localStorage.setItem("examTerminated2", "true");
+    localStorage.setItem("examTerminated3", "true");
 
     examFrameWrapper.hidden = true;
     examHeader.hidden = true;
@@ -279,6 +279,6 @@ continueStartBtn.addEventListener("click", async () => {
     startTimer(totalTimeMin);
 
 });
-if (localStorage.getItem("examTerminated2") === "true") {
+if (localStorage.getItem("examTerminated3") === "true") {
     terminate();
 }//prob wont work but why not try
